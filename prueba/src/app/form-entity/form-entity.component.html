@@ -1,0 +1,81 @@
+<hr>
+<div class="row mt-5 bg-secondary p-3">
+  <div class="col-4"></div>
+  <div class="col-5">
+    <div class="form" [formGroup]="form">
+      <div class="mb-3">
+        <label for="name" class="form-label fw-bold">Nombre</label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+        <div *ngIf="form.get('name')?.getError('required')" class="invalid-feedback">
+          Nombre requerido.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="identificationNumber" class="form-label fw-bold">N° de identificación</label>
+        <input type="text" class="form-control" id="identificationNumber" formControlName="identificationNumber">
+        <div *ngIf="form.get('identificationNumber')?.getError('required')" class="invalid-feedback">
+          N° de identificación requerido.
+        </div>
+        <div *ngIf="form.get('identificationNumber')?.getError('minlength')" class="invalid-feedback">
+          Debe contener mínimo 9 números.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="expirationDate" class="form-label fw-bold">Fecha expiración</label>
+        <input type="text" class="form-control" id="expirationDate" formControlName="expirationDate">
+        <div *ngIf="form.get('expirationDate')?.getError('required')" class="invalid-feedback">
+          Fecha expiración requerida.
+        </div>
+        <div *ngIf="form.get('expirationDate')?.getError('pattern')" class="invalid-feedback">
+          Formato incorrecto.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="contactName" class="form-label fw-bold">Nombre de contacto</label>
+        <input type="text" class="form-control" id="contactName" formControlName="contactName">
+        <div *ngIf="form.get('contactName')?.getError('required')" class="invalid-feedback">
+          Nombre de contacto requerido.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="contactMail" class="form-label fw-bold">Correo de contacto</label>
+        <input type="text" class="form-control" id="contactMail" formControlName="contactMail">
+        <div *ngIf="form.get('contactMail')?.getError('required')" class="invalid-feedback">
+          Correo de contacto requerido.
+        </div>
+        <div *ngIf="form.get('contactMail')?.getError('email')" class="invalid-feedback">
+          Formato de correo inválido.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="ipAddress" class="form-label fw-bold">Dirección IP</label>
+        <input type="text" class="form-control" id="ipAddress" formControlName="ipAddress">
+      </div>
+
+      <div class="text-center">
+        <button
+          [disabled]="form.invalid"
+          type="button"
+          class="btn btn-primary m-2"
+          (click)="save()"
+        >
+          Actualizar
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-danger m-2"
+          (click)="cancel()"
+        >
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-3"></div>
+</div>

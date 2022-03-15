@@ -1,0 +1,26 @@
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-12">
+      <app-list-entity
+        [list]="list"
+        (onSelect)="onSelect($event)"
+      ></app-list-entity>
+    </div>
+  </div>
+  <div>
+    <app-form-entity
+      *ngIf="selected"
+      [entity]="selected"
+      (onSave)="onSave($event)"
+      (onCancel)="onCancel()"
+    ></app-form-entity>
+  </div>
+  <div class="row pt-5">
+      <app-table-entity
+        *ngIf="listSelected.length"
+        (onEdit)="onEdit($event)"
+        (onDelete)="onDelete($event)"
+        [list]="listSelected"
+      ></app-table-entity>
+  </div>
+</div>

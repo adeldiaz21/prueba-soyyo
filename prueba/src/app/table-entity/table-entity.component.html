@@ -1,0 +1,66 @@
+<hr>
+<div class="row mt-5">
+  <div class="col-5">
+    <select
+      class="form-select"
+      aria-label="order-name"
+      [(ngModel)]="orderName"
+      (change)="orderByName()"
+    >
+      <option selected [value]="0">Ordenar por nombre</option>
+      <option [value]="1">Ascendente</option>
+      <option [value]="2">Descendente</option>
+    </select>
+  </div>
+  <div class="col-5">
+    <select
+      class="form-select"
+      aria-label="order-date"
+      [(ngModel)]="orderDate"
+      (change)="orderByDate()"
+    >
+      <option selected [value]="0">Ordenar por fecha</option>
+      <option [value]="1">Ascendente</option>
+      <option [value]="2">Descendente</option>
+    </select>
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col-12">
+    <table class="table table-bordered border-primary">
+      <thead>
+        <tr>
+          <th scope="col">Logo</th>
+          <th scope="col">ID</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">N° de identificación</th>
+          <th scope="col">Fecha expiración</th>
+          <th scope="col">Nombre de contacto</th>
+          <th scope="col">Correo de contacto</th>
+          <th scope="col">Dirección IP</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let item of list;"
+        >
+          <td class="text-center"><img class="img-thumbnail" [src]="item.logo !== '' ? item.logo : '/assets/default.png'" alt="logo"></td>
+          <td class="align-center">{{ item.entityId }}</td>
+          <td class="align-center">{{ item.name }}</td>
+          <td class="align-center">{{ item.identificationNumber }}</td>
+          <td class="align-center">{{ item.expirationDate }}</td>
+          <td class="align-center">{{ item.contactName }}</td>
+          <td class="align-center">{{ item.contactMail }}</td>
+          <td class="align-center">{{ item.ipAddress }}</td>
+          <td class="align-center">
+            <div class="d-grid gap-2">
+              <button class="btn btn-primary" type="button" (click)="edit(item.entityId)">Editar</button>
+              <button class="btn btn-danger" type="button" (click)="delete(item.entityId)">Eliminar</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

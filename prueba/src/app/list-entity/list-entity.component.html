@@ -1,0 +1,16 @@
+<h1>Entidades</h1>
+<div class="list-group border border-primary">
+  <label
+    *ngFor="let item of list;"
+    class="list-group-item"
+  >
+    <input
+      class="form-check-input me-1"
+      type="checkbox"
+      [checked]="verifyChecked(item)"
+      [value]="item"
+      (change)="onSelectItem(item)"
+    >
+    {{ item.name }}
+  </label>
+</div>
